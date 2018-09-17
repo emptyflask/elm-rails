@@ -1,0 +1,24 @@
+{
+    "type": "package",
+    "name": "NoRedInk/elm-rails",
+    "summary": "Convenience functions for using Elm with Rails.",
+    "license": "BSD-3-Clause",
+    "version": "6.2.0",
+    "exposed-modules": [
+        "Rails",
+        "Rails.Decode"
+    ],
+    "elm-version": "0.19.0 <= v < 0.20.0",
+    "dependencies": {
+        "elm/core": "1.0.0 <= v < 2.0.0",
+        "elm/http": "1.0.0 <= v < 2.0.0",
+        "elm/json": "1.0.0 <= v < 2.0.0",
+        "elm/time": "1.0.0 <= v < 2.0.0"
+    },
+    "test-dependencies": {
+      "elm-explorations/test": "1.0.0 <= v < 2.0.0",
+        "elm/html": "1.0.0 <= v < 2.0.0",
+        "rtfeldman/node-test-runner": "0.19-beta8"
+
+    }
+}

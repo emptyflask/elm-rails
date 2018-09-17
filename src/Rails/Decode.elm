@@ -1,6 +1,10 @@
-module Rails.Decode exposing (ErrorList, errors)
+module Rails.Decode exposing
+    ( ErrorList
+    , errors
+    )
 
 {-| Types
+
 @docs ErrorList
 
 
@@ -78,23 +82,23 @@ errors mappings =
                 [] ->
                     Decode.succeed results
 
-                ( fieldName, errors ) :: others ->
+                ( fieldName, errs ) :: others ->
                     let
-                        newResults : Result String (ErrorList field)
+                        newResults : Result Decode.Error (ErrorList field)
                         newResults =
                             Decode.decodeString (fieldDecoderFor fieldName) ("\"" ++ fieldName ++ "\"")
-                                |> Result.map (tuplesFromField errors results)
+                                |> Result.map (tuplesFromField errs results)
                     in
                     case newResults of
                         Err err ->
-                            Decode.fail err
+                            Decode.fail <| Debug.toString err
 
                         Ok newResultList ->
                             toFinalDecoder newResultList others
 
         tuplesFromField : List String -> ErrorList field -> field -> ErrorList field
-        tuplesFromField errors results field =
-            errors
+        tuplesFromField errs results field =
+            errs
                 |> List.map (\error -> ( field, error ))
                 |> List.append results
     in

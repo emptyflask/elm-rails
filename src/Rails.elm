@@ -1,4 +1,4 @@
-module Rails exposing (Error, decodeErrors, decodeRawErrors, delete, get, patch, post, put, request)
+module Rails exposing (Error, get, post, put, patch, delete, decodeErrors, decodeRawErrors, request)
 
 {-|
 
@@ -12,7 +12,8 @@ module Rails exposing (Error, decodeErrors, decodeRawErrors, delete, get, patch,
 import Http exposing (Body, Expect, Header, Request, Response)
 import Json.Decode exposing (Decoder, decodeString)
 import Result exposing (Result)
-import Time exposing (Time)
+import Time
+
 
 
 -- Http
@@ -221,7 +222,7 @@ request :
     , url : String
     , body : Body
     , expect : Expect a
-    , timeout : Maybe Time
+    , timeout : Maybe Float
     , withCredentials : Bool
     }
     -> Request a

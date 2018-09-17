@@ -1,11 +1,11 @@
 module RailsTests exposing (all)
 
-import Test exposing (..)
-import Expect exposing (Expectation)
-import Rails
-import Json.Decode
-import Http
 import Dict
+import Expect exposing (Expectation)
+import Http
+import Json.Decode
+import Rails
+import Test exposing (..)
 
 
 all : Test
@@ -53,4 +53,4 @@ expectErr check result =
             check x
 
         Ok _ ->
-            Expect.fail ("Expected (Err _), but got: " ++ toString result)
+            Expect.fail ("Expected (Err _), but got: " ++ Debug.toString result)
